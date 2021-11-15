@@ -5,23 +5,26 @@ document.querySelector ("body").appendChild (h2);
 const character = document.getElementById ("character");
 const block = document.getElementById ("block");
 const counter = 0;
-function jump () {
-    if (character.classList == "animate") {return}
-    character.classList.add ("animate");
-    setTimeout (function () {
-        character.classList.remove ("animate");
+function jump(){
+    character.addEventListener('keydown', function(){
+        
+    })
+    if(character.classList == "animate"){return}
+    character.classList.add("animate");
+    setTimeout (function(){
+        character.classList.remove("animate");
     },300);
 }
-const checkDead = setInterval (function () {
-    let characterTop = parseInt (window.getComputedStyle (character).getPropertyValue ("top"));
-    let blockLeft = parseInt (window.getComputedStyle (block).getPropertyValue ("left"));
-    if (blockLeft < 20 && blockLeft >- 20 && characterTop >= 130) {
+const checkDead = setInterval(function(){
+    let characterTop = parseInt (window.getComputedStyle(character).getPropertyValue("top"));
+    let blockLeft = parseInt (window.getComputedStyle(block).getPropertyValue("left"));
+    if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
         block.style.animation = "none";
-        aler ("Game Over. Score: "+Math.floor (counter/100));
-        counter = 0;
+        alert("Game Over. Score: "+Math.floor (counter/100));
+        counter=0;
         block.style.animation = "block 1s infinite linear";
-    } else {
+    }else{
         counter++;
-        document.getElementById ("scoreSpan").innerHTML = Math.floor (counter/100);
+        document.getElementById("scoreSpan").innerHTML = Math.floor(counter/100);
     }
 }, 10);
